@@ -1,0 +1,1 @@
+{"root":["./src/app.tsx","./src/main.tsx","./src/types.d.ts","./src/components/hintbox.tsx","./src/components/lock.tsx","./src/components/playerpanel.tsx","./src/components/results.tsx","./src/utils/dataloader.ts","./src/utils/sound.ts"],"version":"5.9.3"}
