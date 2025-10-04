@@ -25,13 +25,6 @@ Thumbs.db
 # Env
 .env*
 
-# Misc
-public/icons/*.png
-public/icons/*.jpg
-public/icons/*.jpeg
-public/icons/*.svg
-public/icons/*.webp
-
 # Optional: ignore generated icon script output
 scripts/*.log
 dist/
