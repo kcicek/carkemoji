@@ -24,10 +24,19 @@ const LockRing: React.FC<LockRingProps> = ({ items, activeIndex, radius, outerRa
   const spinIntervalRef = useRef<number | null>(null);
   const lastEmitRef = useRef<number>(activeIndex);
 
-  // Update rotationDeg whenever activeIndex changes keeping direction continuity.
+  // Update rotationDeg with continuity: take previous angle and move minimal angular distance
   useEffect(() => {
     const stepAngle = 360 / items.length;
-    setRotationDeg(- stepAngle * activeIndex - 90);
+    const target = - stepAngle * activeIndex - 90; // canonical position
+    setRotationDeg(prev => {
+      if (prev === target) return prev;
+      // Normalize previous and target to compute shortest path
+      let diff = target - prev;
+      // Wrap diff into [-180,180] for minimal rotation
+      while (diff > 180) diff -= 360;
+      while (diff < -180) diff += 360;
+      return prev + diff;
+    });
   }, [activeIndex, items.length]);
 
   function clientAngle(e: Touch | MouseEvent): number {
@@ -119,9 +128,8 @@ const LockRing: React.FC<LockRingProps> = ({ items, activeIndex, radius, outerRa
   className="relative w-full h-full rounded-full border border-slate-600/60 bg-slate-800/40 overflow-visible touch-none select-none cursor-pointer"
   style={{ WebkitMask: 'radial-gradient(circle at center, black 72%, transparent 74%)' }}
         /* Continuous rotation (avoid reverse jump on wrap) */
-        animate={{ rotate: rotationDeg }}
-        // onUpdate artık gerekli değil; highlight doğrudan activeIndex'e göre yapılacak
-        transition={{ type: 'spring', stiffness: 140, damping: 20 }}
+  animate={{ rotate: rotationDeg }}
+  transition={{ type: 'spring', stiffness: 140, damping: 18, mass: 0.9 }}
       >
         {items.map((emj, i) => {
           const angle = (360 / items.length) * i;
