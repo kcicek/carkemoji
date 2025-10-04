@@ -1,0 +1,36 @@
+# Node
+node_modules/
+
+# Build output
+dist/
+
+# TypeScript
+*.tsbuildinfo
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Editor
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Env
+.env*
+
+# Misc
+public/icons/*.png
+public/icons/*.jpg
+public/icons/*.jpeg
+public/icons/*.svg
+public/icons/*.webp
+
+# Optional: ignore generated icon script output
+scripts/*.log
