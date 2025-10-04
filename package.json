@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build_local": "tsc -b && vite build",
+    "build": "GITHUB_PAGES=true npm run build_local",
     "preview": "vite preview",
     "lint": "echo 'Add eslint later'",
     "generate:icons": "node scripts/generate-icons.mjs"

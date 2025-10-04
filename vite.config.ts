@@ -23,16 +23,16 @@ export default defineConfig(({ command }) => {
           short_name: 'ÇarkEmoji',
           description: 'Türkçe atasözleri ve deyimleriyle emoji tahmin oyunu',
           lang: 'tr',
-          start_url: '/',
-          scope: '/',
-            display: 'standalone',
+          start_url: isProd ? '/carkemoji/' : '/',
+          scope: isProd ? '/carkemoji/' : '/',
+          display: 'standalone',
           theme_color: '#0f172a',
           background_color: '#0f172a',
           icons: [
-            { src: '/icons/icon-192.png', sizes: '192x192', type: 'image/png' },
-            { src: '/icons/icon-512.png', sizes: '512x512', type: 'image/png' },
-            { src: '/icons/maskable-192.png', sizes: '192x192', type: 'image/png', purpose: 'maskable' },
-            { src: '/icons/maskable-512.png', sizes: '512x512', type: 'image/png', purpose: 'maskable' }
+            { src: isProd ? '/carkemoji/icons/icon-192.png' : '/icons/icon-192.png', sizes: '192x192', type: 'image/png' },
+            { src: isProd ? '/carkemoji/icons/icon-512.png' : '/icons/icon-512.png', sizes: '512x512', type: 'image/png' },
+            { src: isProd ? '/carkemoji/icons/maskable-192.png' : '/icons/maskable-192.png', sizes: '192x192', type: 'image/png', purpose: 'maskable' },
+            { src: isProd ? '/carkemoji/icons/maskable-512.png' : '/icons/maskable-512.png', sizes: '512x512', type: 'image/png', purpose: 'maskable' }
           ]
         }
       })
