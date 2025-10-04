@@ -13,7 +13,7 @@ createRoot(document.getElementById('root') as HTMLElement).render(
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     // The plugin will generate sw.js in dist root
-    navigator.serviceWorker.register('/sw.js').catch((err) => {
+  navigator.serviceWorker.register('/carkemoji/sw.js').catch((err) => {
       // eslint-disable-next-line no-console
       console.warn('SW registration failed', err);
     });

@@ -34,3 +34,4 @@ public/icons/*.webp
 
 # Optional: ignore generated icon script output
 scripts/*.log
+dist/
